@@ -14,3 +14,4 @@ This is my personal portfolio built using HTML and CSS.
 
 ## How to run
 Open index.html in browser
+open wedpage.html in browser
