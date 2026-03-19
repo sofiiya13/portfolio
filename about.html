@@ -1,0 +1,123 @@
+ <!DOCTYPE html>
+<html>
+<head>
+    <title>About Me</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <nav>
+            <div class="logo">GIMMI</div>
+            <ul class="nav-links">
+                <li>Home</li>
+                <li>About</li>
+                <li>Skills</li>
+                <li>Contact</li>
+            </ul>
+        </nav>
+
+        <header>
+            <h1>Game</h1>
+            <p>Aspiring Web Developer</p>
+        </header>
+
+        <section>
+            <h2>About us</h2>
+            <p>  we tursted brand u can check in online sources </p>
+        </section>
+
+         <section>
+    <h2>Levels</h2>
+    <button id="startGameBtn">Start Game</button>
+<p id="gameMessage"></p>
+    <div class="skills-container">
+        <div class="skill-card" data-level="Easy mode selected!">EASY</div>
+        <div class="skill-card" data-level="Medium mode selected!">MEDIUM</div>
+        <div class="skill-card" data-level="Hard mode selected!">HARD</div>
+    </div>
+    <p id="levelMessage"></p>
+</section>
+
+        <section>
+            <h2>features</h2>
+            <ol>
+                <li>fast game </li>
+                <li>dynamic effects </li>
+                <li> realtime updates</li>
+                <li> user-friendly interface </li>
+                <li> secure and reliable </li>
+                <li> cross-platform compatibility </li>
+                <li>realistic graphics</li>
+            </ol>
+        </section>
+
+        <button id="welcomeBtn">Click Me</button>
+        <p id="message"></p>
+
+        <footer>
+            <p>Contact: your.email@example.com</p>
+            <p>© 2026 Sofiya</p>
+        </footer>
+
+    </div>
+
+    <!-- Move script here -->
+    <script>
+        const button = document.getElementById("welcomeBtn");
+        const message = document.getElementById("message");
+
+        button.addEventListener("click", function()
+        
+        {
+            if (message.textContent.trim() === "") {
+                message.textContent = "Welcome to my game !";
+            } else {
+                message.textContent = "";
+            }
+        });
+        const startButton = document.getElementById("startGameBtn");
+const gameMessage = document.getElementById("gameMessage");
+
+startButton.addEventListener("click", function() {
+    // Find selected level
+    const selectedLevel = document.querySelector(".skill-card.selected");
+    
+    if (!selectedLevel) {
+        gameMessage.textContent = "Please select a level first!";
+        return;
+    }
+
+    let time;
+    if (selectedLevel.textContent === "EASY") time = 5;
+    else if (selectedLevel.textContent === "MEDIUM") time = 3;
+    else if (selectedLevel.textContent === "HARD") time = 1;
+
+    gameMessage.textContent = `Game started! You have ${time} seconds.`;
+
+    // Timer countdown
+    setTimeout(() => {
+        gameMessage.textContent = `Time's up! ${selectedLevel.textContent} challenge ended.`;
+    }, time * 1000);
+});
+        const levelCards = document.querySelectorAll(".skill-card");
+const levelMessage = document.getElementById("levelMessage");
+
+levelCards.forEach(card => {
+    card.addEventListener("click", function() {
+        // Show message
+        levelMessage.textContent = card.dataset.level;
+
+        // Remove selected class from all
+        levelCards.forEach(c => c.classList.remove("selected"));
+
+        // Add selected class to clicked card
+        card.classList.add("selected");
+    });
+});
+ 
+    </script>
+
+</body>
+</html>

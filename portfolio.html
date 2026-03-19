@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">Sofiya</div>
+        <ul class="nav-links">
+            <li>Home</li>
+            <li>About</li>
+            <li>Skills</li>
+            <li>Projects</li>
+            <li>Contact</li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <h1>Hi, I'm Sofiya 👋</h1>
+        <p>Aspiring Web Developer</p>
+        <button id="welcomeBtn">Say Hello</button>
+        <p id="message"></p>
+    </header>
+
+    <!-- About -->
+    <section>
+        <h2>About Me</h2>
+        <p>
+            I am a passionate web developer learning HTML, CSS, and JavaScript.
+            I enjoy building interactive and user-friendly websites.
+        </p>
+    </section>
+
+    <!-- Skills -->
+    <section>
+        <h2>My Skills</h2>
+        <div class="skills-container">
+            <div class="skill-card">HTML</div>
+            <div class="skill-card">CSS</div>
+            <div class="skill-card">JavaScript</div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section>
+        <h2>My Projects</h2>
+
+        <button id="startGameBtn">View Project</button>
+        <p id="gameMessage"></p>
+
+        <div class="skills-container">
+            <div class="skill-card" data-project="Simple Game Project">Game Project</div>
+            <div class="skill-card" data-project="Portfolio Website">Portfolio</div>
+            <div class="skill-card" data-project="Mini Web Apps">Mini Apps</div>
+        </div>
+
+        <p id="levelMessage"></p>
+    </section>
+
+    <!-- Features -->
+    <section>
+        <h2>Features</h2>
+        <ol>
+            <li>Responsive Design</li>
+            <li>Interactive UI</li>
+            <li>Clean Code</li>
+            <li>User-Friendly Interface</li>
+            <li>Fast Performance</li>
+        </ol>
+    </section>
+
+    <!-- Contact -->
+    <footer>
+        <p>Contact: sofiya@email.com</p>
+        <p>© 2026 Sofiya</p>
+    </footer>
+
+</div>
+
+<script>
+    // Welcome Button
+    const button = document.getElementById("welcomeBtn");
+    const message = document.getElementById("message");
+
+    button.addEventListener("click", function() {
+        if (message.textContent.trim() === "") {
+            message.textContent = "Welcome to my portfolio!";
+        } else {
+            message.textContent = "";
+        }
+    });
+
+    // Project Button
+    const startButton = document.getElementById("startGameBtn");
+    const gameMessage = document.getElementById("gameMessage");
+
+    startButton.addEventListener("click", function() {
+        const selectedProject = document.querySelector(".skill-card.selected");
+
+        if (!selectedProject) {
+            gameMessage.textContent = "Please select a project!";
+            return;
+        }
+
+        gameMessage.textContent = `Opening ${selectedProject.textContent}...`;
+    });
+
+    // Project Selection
+    const cards = document.querySelectorAll(".skill-card");
+    const levelMessage = document.getElementById("levelMessage");
+
+    cards.forEach(card => {
+        card.addEventListener("click", function() {
+
+            if (card.dataset.project) {
+                levelMessage.textContent = card.dataset.project;
+            }
+
+            cards.forEach(c => c.classList.remove("selected"));
+            card.classList.add("selected");
+        });
+    });
+
+</script>
+
+</body>
+</html>

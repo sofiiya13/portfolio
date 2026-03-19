@@ -1,0 +1,93 @@
+ body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color:rgb(74, 202, 245) ;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+ nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ee0b0b;
+
+    /* Sticky navbar */
+    position: sticky;
+    top: 0;
+    background-color:white ;
+    z-index: 100;
+}
+
+.nav-links li:hover {
+    color: #4CAF50;
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+}
+
+.nav-links li {
+    cursor: pointer;
+}
+
+.nav-links li:hover {
+    color: #4CAF50;
+}
+.skills-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.skill-card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    width: 30%;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0px 3px 10px rgba(1, 9, 12, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: scale(1.05);
+}
+ /* Responsive for small screens */
+@media (max-width: 768px) {
+    .skills-container {
+        flex-direction: column; /* stack cards vertically */
+        gap: 15px;              /* spacing between cards */
+    }
+
+    .skill-card {
+        width: 100%;            /* full width for each card */
+    }
+}
+/* Hover effect for levels */
+.skill-card:hover {
+    transform: scale(1.05); /* slight zoom */
+    cursor: pointer;         /* pointer cursor */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Optional: highlight selected level remains green */
+.skill-card.selected {
+    background-color: #4CAF50;
+    color: white;
+}
